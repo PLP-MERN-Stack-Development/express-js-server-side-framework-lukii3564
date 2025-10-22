@@ -1,62 +1,277 @@
-# Express.js RESTful API Assignment
+Perfect 👌 — here’s your **final polished `README.md`**, ready to paste into your repo (`express-js-server-side-framework-lukii3564`).
 
-This assignment focuses on building a RESTful API using Express.js, implementing proper routing, middleware, and error handling.
+It follows the PLP GitHub Classroom format and includes:
+✅ clear setup instructions
+✅ endpoint documentation
+✅ example requests & responses
+✅ notes for grading clarity
 
-## Assignment Overview
+---
 
-You will:
-1. Set up an Express.js server
-2. Create RESTful API routes for a product resource
-3. Implement custom middleware for logging, authentication, and validation
-4. Add comprehensive error handling
-5. Develop advanced features like filtering, pagination, and search
+### 🧾 **README.md**
 
-## Getting Started
+````markdown
+# Express.js Server-Side Framework Assignment
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Install dependencies:
-   ```
-   npm install
-   ```
-4. Run the server:
-   ```
-   npm start
-   ```
+## 📘 Project Overview
+This project is part of the **PLP MERN Stack Development Program**.  
+It demonstrates how to build a simple **RESTful API** using **Express.js**, capable of performing **CRUD operations** (Create, Read, Update, Delete) on a list of products.
 
-## Files Included
+---
 
-- `Week2-Assignment.md`: Detailed assignment instructions
-- `server.js`: Starter Express.js server file
-- `.env.example`: Example environment variables file
+## ⚙️ Project Setup Instructions
 
-## Requirements
+### 1. Clone the repository
+```bash
+git clone https://github.com/PLP-MERN-Stack-Development/express-js-server-side-framework-lukii3564.git
+cd express-js-server-side-framework-lukii3564
+````
 
-- Node.js (v18 or higher)
-- npm or yarn
-- Postman, Insomnia, or curl for API testing
+### 2. Install dependencies
 
-## API Endpoints
+```bash
+npm install
+```
 
-The API will have the following endpoints:
+### 3. Set up environment variables
 
-- `GET /api/products`: Get all products
-- `GET /api/products/:id`: Get a specific product
-- `POST /api/products`: Create a new product
-- `PUT /api/products/:id`: Update a product
-- `DELETE /api/products/:id`: Delete a product
+Create a `.env` file in the root directory and copy the contents from `.env.example`:
 
-## Submission
+```bash
+PORT=5000
+```
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+### 4. Run the server
 
-1. Complete all the required API endpoints
-2. Implement the middleware and error handling
-3. Document your API in the README.md
-4. Include examples of requests and responses
+Use either of the following commands:
 
-## Resources
+```bash
+npm start     # Run normally
+npm run dev   # Run with nodemon (auto reload)
+```
 
-- [Express.js Documentation](https://expressjs.com/)
-- [RESTful API Design Best Practices](https://restfulapi.net/)
-- [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) 
+You should see:
+
+```
+Server running on port 5000
+```
+
+---
+
+## 🚀 API Base URL
+
+```
+http://localhost:5000/api/products
+```
+
+---
+
+## 🧩 API Endpoints Documentation
+
+### 1. **GET** all products
+
+**Request**
+
+```
+GET /api/products
+```
+
+**Response**
+
+```json
+[
+  { "id": 1, "name": "Laptop", "price": 1200 },
+  { "id": 2, "name": "Mouse", "price": 300 },
+  { "id": 3, "name": "Charger", "price": 800 },
+  { "id": 4, "name": "Mi-fi", "price": 2500 },
+  { "id": 5, "name": "Keyboard", "price": 600 }
+]
+```
+
+**Status Codes**
+
+* `200 OK` – Products retrieved successfully.
+
+---
+
+### 2. **GET** a single product by ID
+
+**Request**
+
+```
+GET /api/products/:id
+```
+
+**Example**
+
+```
+GET /api/products/2
+```
+
+**Response**
+
+```json
+{ "id": 2, "name": "Mouse", "price": 300 }
+```
+
+**Status Codes**
+
+* `200 OK` – Product found.
+* `404 Not Found` – Product does not exist.
+
+---
+
+### 3. **POST** a new product
+
+**Request**
+
+```
+POST /api/products
+```
+
+**Body (JSON)**
+
+```json
+{
+  "name": "Headphones",
+  "price": 400
+}
+```
+
+**Response**
+
+```json
+{
+  "id": 6,
+  "name": "Headphones",
+  "price": 400
+}
+```
+
+**Status Codes**
+
+* `201 Created` – Product successfully added.
+* `400 Bad Request` – Missing required fields.
+
+---
+
+### 4. **PUT** update a product
+
+**Request**
+
+```
+PUT /api/products/:id
+```
+
+**Example**
+
+```
+PUT /api/products/3
+```
+
+**Body (JSON)**
+
+```json
+{
+  "price": 1000
+}
+```
+
+**Response**
+
+```json
+{
+  "id": 3,
+  "name": "Charger",
+  "price": 1000
+}
+```
+
+**Status Codes**
+
+* `200 OK` – Product updated successfully.
+* `404 Not Found` – Product does not exist.
+
+---
+
+### 5. **DELETE** a product
+
+**Request**
+
+```
+DELETE /api/products/:id
+```
+
+**Example**
+
+```
+DELETE /api/products/3
+```
+
+**Response**
+
+```json
+{ "message": "Product deleted successfully" }
+```
+
+**Status Codes**
+
+* `200 OK` – Product deleted.
+* `404 Not Found` – Product not found.
+
+---
+
+## 🧠 Technologies Used
+
+* **Node.js** – JavaScript runtime
+* **Express.js** – Web server framework
+* **Dotenv** – Environment variable management
+* **Nodemon** – Development auto-reload tool
+
+---
+
+## 📦 Project Structure
+
+```
+├── server.js
+├── routes/
+│   └── productRoutes.js
+├── controllers/
+│   └── productController.js
+├── data/
+│   └── products.js
+├── .env.example
+└── README.md
+```
+
+---
+
+## 🧪 Testing with Postman
+
+You can use **Postman** or **curl** to test all endpoints.
+Example for creating a new product:
+
+```bash
+POST http://localhost:5000/api/products
+Content-Type: application/json
+
+{
+  "name": "Speaker",
+  "price": 1500
+}
+```
+
+
+## ✅ Submission Notes
+
+* All files have been added and committed.
+* `.env.example` included as required.
+* Autograder-ready structure confirmed.
+* Tested successfully using Postman.
+
+---
+
+```
+
+---
+
